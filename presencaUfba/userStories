@@ -1,0 +1,10 @@
+UserStories
+
+
+Deve ser possível ao professor administrar presenças dos alunos;
+o professor deve fazer autenticação através de usuário e senha;
+os alunos devem ser identificados por matrícula e nome;
+os alunos devem fazer referência a uma turma, essa qual deve ser identificada por um codigo;
+uma turma deve fazer referência a uma disciplina que deve ser identificada por nome, codigo e carga horária;
+quando o relatório for gerado deve exibir as informações da disciplina, da turma e os alunos contidos nela;
+o relatório deve seguir o padrão do arquivo PDF que esta no diretório do projeto;
