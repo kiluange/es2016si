@@ -114,6 +114,11 @@ public class TelaPesquisaDisiciplina extends JDialog {
 		getContentPane().add(list);
 		{
 			JButton btnAbrir_1 = new JButton("Abrir");
+			btnAbrir_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					new TelaTurma().setVisible(true);
+				}
+			});
 			btnAbrir_1.setBounds(435, 402, 89, 23);
 			getContentPane().add(btnAbrir_1);
 		}
