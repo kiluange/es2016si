@@ -1,10 +1,19 @@
 package br.com.dados;
 
 public class Professor {
+	private int id ;
+	private String nome;
+	private String usuario;
+	private String senha;
 	
-	private String nome = null;
-	private String usuario = null;
-	private String senha = null;
+	//Constructor
+	public Professor(int id, String nome, String usuario, String senha) {
+		// TODO Auto-generated constructor stub
+		setId(id);
+		setNome(nome);
+		setUsuario(usuario);
+		setSenha(senha);
+	}
 	
 	//getter e setters
 	public String getNome() {
@@ -24,6 +33,12 @@ public class Professor {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

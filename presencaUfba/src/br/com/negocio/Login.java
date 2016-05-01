@@ -25,10 +25,9 @@ public class Login extends ControleLogin {
 
 	@Override
 	Logado verificaLogin(String user, String senha) {
-		// TODO Auto-generated method stub
 		Logado logado = new Logado();
 		logado.Pesquisa(user);
-		if (user.equals(logado.professor.getUsuario()) && senha.equals(logado.professor.getSenha())) {
+		if (user.equals(logado.getDb().getProfessor().getUsuario()) && senha.equals(logado.getDb().getProfessor().getSenha())) {
 			System.out.println("senha ok");
 			logado.setPass(true);
 		}else {

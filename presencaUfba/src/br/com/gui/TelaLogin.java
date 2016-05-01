@@ -85,6 +85,7 @@ public class TelaLogin extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				Fachada fachada = new Fachada();
 				fachada.login(textField.getText(), pwdPassword.getText());
+				System.out.println(textField.getText());
 				// verifica se o retorno e verdadeiro caso não seja ativa msg de
 				// erro;
 				if (fachada.getLogado().isPass() == false) {

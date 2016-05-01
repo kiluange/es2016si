@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import br.com.dados.Professor;
+
 public class QueryUsuarioDB{
 	
 	
@@ -13,6 +15,8 @@ public class QueryUsuarioDB{
 	private String login;
 	private String senha;
 	private String name;
+	
+	private Professor professor;
 
 	public QueryUsuarioDB(String usuario) {
 		// TODO Auto-generated constructor stub
@@ -31,6 +35,7 @@ public class QueryUsuarioDB{
 	         setName(rs.getString("nome"));
 	         setLogin(rs.getString("login"));
 	         setSenha(rs.getString("senha"));
+	         setProfessor(new Professor(getId(), getName(), getLogin(), getSenha()));
 	      }
 	      rs.close();
 	      stmt.close();
@@ -73,6 +78,14 @@ public class QueryUsuarioDB{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
 	}
 	
 
