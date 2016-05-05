@@ -21,22 +21,12 @@ public class TelaTurma extends JDialog {
 	private JTable table;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			TelaTurma dialog = new TelaTurma();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Create the dialog.
+	 * @param choraria 
+	 * @param codigo 
+	 * @param string 
 	 */
-	public TelaTurma() {
+	public TelaTurma(String disciplina, String codigo, String choraria) {
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1012, 568);
 		setModal(true);
@@ -62,7 +52,7 @@ public class TelaTurma extends JDialog {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		{
-			JLabel label = new JLabel("Disciplina");
+			JLabel label = new JLabel(disciplina);
 			label.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			GridBagConstraints gbc_label = new GridBagConstraints();
 			gbc_label.fill = GridBagConstraints.HORIZONTAL;
@@ -74,7 +64,7 @@ public class TelaTurma extends JDialog {
 			panel.add(label, gbc_label);
 		}
 		{
-			JLabel label = new JLabel("Turma:");
+			JLabel label = new JLabel("Turma: "+codigo);
 			GridBagConstraints gbc_label = new GridBagConstraints();
 			gbc_label.anchor = GridBagConstraints.SOUTHWEST;
 			gbc_label.insets = new Insets(0, 0, 0, 5);
@@ -83,7 +73,7 @@ public class TelaTurma extends JDialog {
 			panel.add(label, gbc_label);
 		}
 		{
-			JLabel label = new JLabel("Carga Horaria:");
+			JLabel label = new JLabel("Carga Horaria: "+choraria);
 			GridBagConstraints gbc_label = new GridBagConstraints();
 			gbc_label.anchor = GridBagConstraints.SOUTHWEST;
 			gbc_label.insets = new Insets(0, 0, 0, 5);
