@@ -93,16 +93,17 @@ public class TelaPesquisaDisiciplina extends JDialog {
 		getContentPane().add(btnAbrir);
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				list.removeAll();				
+				list.removeAll();
 				for (Disciplina disciplina : fachada.getFazPesquisa().getDb().getAllDisciplinas()) {
 					if (choice.getSelectedItem().equals(disciplina.getCodigo() + " - " + disciplina.getNome())) {
 						fachada.pequisaTurma(disciplina.getId());
 					}
 				}
 				for (Turma turma : fachada.getFazPesquisa().getQtBd().getAllTurmas()) {
-					list.add("Turma: " + turma.getCodigo() + " Hora: " + turma.getHora() + " Sala: " + turma.getPavilhao() +" - "+ turma.getSala());
+					list.add("Turma: " + turma.getCodigo() + " Hora: " + turma.getHora() + " Sala: "
+							+ turma.getPavilhao() + " - " + turma.getSala());
 				}
-				
+
 			}
 		});
 		btnAbrir.setEnabled(false);
@@ -118,16 +119,16 @@ public class TelaPesquisaDisiciplina extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					String a = null, b = null;
 					for (Turma turma : fachada.getFazPesquisa().getQtBd().getAllTurmas()) {
-						//get com -1 porque o campo list começa em 0 e a lista de turmas começa em 1
-						if (turma.getId()-1 == list.getSelectedIndex()) {
+						// get com -1 porque o campo list começa em 0 e a lista
+						// de turmas começa em 1
+						if (turma.getId() - 1 == list.getSelectedIndex()) {
 							a = turma.getCodigo();
 							b = turma.getHora();
-							
+
 						}
 					}
 					new TelaTurma(choice.getSelectedItem(), a, b).setVisible(true);
-					
-					
+
 				}
 			});
 			btnAbrir_1.setBounds(435, 402, 89, 23);
