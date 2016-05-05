@@ -116,7 +116,17 @@ public class TelaPesquisaDisiciplina extends JDialog {
 			JButton btnAbrir_1 = new JButton("Abrir");
 			btnAbrir_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					new TelaTurma().setVisible(true);
+					String a = null, b = null;
+					for (Turma turma : fachada.getFazPesquisa().getQtBd().getAllTurmas()) {
+						if (turma.getId()-1 == list.getSelectedIndex()) {
+							a = turma.getCodigo();
+							b = turma.getHora();
+							
+						}
+					}
+					new TelaTurma(choice.getSelectedItem(), a, b).setVisible(true);
+					
+					
 				}
 			});
 			btnAbrir_1.setBounds(435, 402, 89, 23);
