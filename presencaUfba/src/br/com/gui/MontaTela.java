@@ -21,9 +21,9 @@ public class MontaTela extends JFrame {
 	 */
 	private static final long serialVersionUID = 5554725647535056603L;
 	private static int identificação;
-	static JMenu mnBuscar;
-	static JMenu mnRelatorio;
-	static JMenuItem mntmSair;
+	protected static JMenu mnBuscar;
+	protected static JMenu mnRelatorio;
+	protected static JMenuItem mntmSair;
 
 	/**
 	 * Create the frame.
