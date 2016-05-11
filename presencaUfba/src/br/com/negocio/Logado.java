@@ -28,6 +28,5 @@ public class Logado extends PesquisaUsuario {
 
 	public void setPass(boolean pass) {
 		this.pass = pass;
-	}	
-
+	}
 }

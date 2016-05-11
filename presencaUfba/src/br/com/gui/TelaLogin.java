@@ -93,6 +93,9 @@ public class TelaLogin extends JPanel {
 				} else {
 					setEnabled(false);
 					setVisible(false);
+					MontaTela.menus(true);
+					MontaTela.setIdentificação(fachada.getLogado().getDb().getId());
+					System.out.println(fachada.getLogado().getDb().getId());
 				}
 			}
 		});

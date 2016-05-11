@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.com.dados.Aluno;
 import br.com.dados.Turma;
 
 public class QueryTurmaDB {
@@ -46,7 +47,7 @@ public class QueryTurmaDB {
 				setPavilhao(rs.getString("pavilhao"));
 				setSala(rs.getString("sala"));
 				//Adiciona resultado numa lista
-				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala());
+				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala(), new LinkedList<Aluno>());
 				turmas.add(turma);
 			}
 			rs.close();

@@ -20,6 +20,10 @@ public class MontaTela extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 5554725647535056603L;
+	private static int identificação;
+	static JMenu mnBuscar;
+	static JMenu mnRelatorio;
+	static JMenuItem mntmSair;
 
 	/**
 	 * Create the frame.
@@ -36,13 +40,15 @@ public class MontaTela extends JFrame {
 		JMenu mnOpes = new JMenu("Op\u00E7\u00F5es");
 		menuBar.add(mnOpes);
 		
-		JMenuItem mntmSair = new JMenuItem("Sair");
+		mntmSair = new JMenuItem("Sair");
+		mntmSair.setEnabled(false);
 		mntmSair.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
+					menus(false);
 					setContentPane(new TelaLogin());
 				} catch (Exception e2) {
 					// TODO: handle exception
@@ -66,7 +72,8 @@ public class MontaTela extends JFrame {
 			}
 		});
 		
-		JMenu mnBuscar = new JMenu("Buscar");
+		mnBuscar = new JMenu("Buscar");
+		mnBuscar.setEnabled(false);
 		menuBar.add(mnBuscar);
 		
 		JMenuItem mntmDisciplina = new JMenuItem("Nova busca");
@@ -84,9 +91,9 @@ public class MontaTela extends JFrame {
 				
 			}
 		});
-		mnBuscar.add(mntmDisciplina);
-		
-		JMenu mnRelatorio = new JMenu("Relat\u00F3rio");
+		mnBuscar.add(mntmDisciplina);		
+		mnRelatorio = new JMenu("Relat\u00F3rio");
+		mnRelatorio.setEnabled(false);
 		menuBar.add(mnRelatorio);
 		
 		JMenuItem mntmNovo = new JMenuItem("Novo");
@@ -106,5 +113,20 @@ public class MontaTela extends JFrame {
 			}
 		});
 		setContentPane(new TelaLogin());
+	}
+	
+	public static void menus(boolean estado) {
+		mnBuscar.setEnabled(estado);
+		mnRelatorio.setEnabled(estado);
+		mntmSair.setEnabled(estado);
+		
+	}
+
+	public static int getIdentificação() {
+		return identificação;
+	}
+
+	public static void setIdentificação(int identificação) {
+		MontaTela.identificação = identificação;
 	}
 }

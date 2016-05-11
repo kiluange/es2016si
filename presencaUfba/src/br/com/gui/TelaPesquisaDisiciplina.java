@@ -124,7 +124,6 @@ public class TelaPesquisaDisiciplina extends JDialog {
 						if (turma.getId() - 1 == list.getSelectedIndex()) {
 							a = turma.getCodigo();
 							b = turma.getHora();
-
 						}
 					}
 					new TelaTurma(choice.getSelectedItem(), a, b).setVisible(true);
