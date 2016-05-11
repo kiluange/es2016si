@@ -50,6 +50,7 @@ public class MontaTela extends JFrame {
 				try {
 					menus(false);
 					setContentPane(new TelaLogin());
+					identificação = 0;
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
