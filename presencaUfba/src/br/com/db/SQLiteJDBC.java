@@ -42,8 +42,8 @@ public class SQLiteJDBC {
 
 			Statement stmt = connection.createStatement();
 			String sql = "CREATE TABLE USUARIO "
-					+ "(ID 			INTEGER		PRIMARY KEY     AUTOINCREMENT	NOT NULL,"
-					+ " NOME           TEXT    	NOT NULL, " + " LOGIN          CHAR(30)    NOT NULL, "
+					+ "(IDUSUARIO 			INTEGER		PRIMARY KEY     AUTOINCREMENT	NOT NULL,"
+					+ " USERNOME           TEXT    	NOT NULL, " + " LOGIN          CHAR(30)    NOT NULL, "
 					+ " SENHA        	CHAR(50) 	NOT NULL)";
 			stmt.executeUpdate(sql);
 			stmt.close();
@@ -62,8 +62,8 @@ public class SQLiteJDBC {
 		try {
 
 			Statement stmt = connection.createStatement();
-			String sql = "CREATE TABLE ALUNO " + "(ID 			INTEGER		PRIMARY KEY    AUTOINCREMENT 	NOT NULL,"
-					+ " NOME           TEXT    	NOT NULL, " + " MATRICULA    	CHAR(9)    	NOT NULL)";
+			String sql = "CREATE TABLE ALUNO " + "(IDALUNO 			INTEGER		PRIMARY KEY    AUTOINCREMENT 	NOT NULL,"
+					+ " NOMEALUNO           TEXT    	NOT NULL, " + " MATRICULA    	CHAR(9)    	NOT NULL)";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			// connection.close();
@@ -81,12 +81,12 @@ public class SQLiteJDBC {
 		try {
 
 			Statement stmt = connection.createStatement();
-			String sql = "CREATE TABLE TURMA " + "(ID 			INTEGER		PRIMARY KEY     AUTOINCREMENT	NOT NULL,"
+			String sql = "CREATE TABLE TURMA " + "(IDTURMA 			INTEGER		PRIMARY KEY     AUTOINCREMENT	NOT NULL,"
 					+ " FK_DISCIPLINA 	INT 		NOT NULL," + " CODIGO         CHAR(8)    	NOT NULL,"
 					+ " FK_PROFESSOR	INT			NOT NULL," + " HORA			TIME		NOT NULL,"
 					+ " PAVILHAO 		CHAR(10)	NOT NULL," + " SALA 			CHAR(10),"
-					+ " FOREIGN KEY(FK_PROFESSOR) REFERENCES  USUARIO(ID),"
-					+ " FOREIGN KEY(FK_DISCIPLINA) REFERENCES  DISCIPLINA(ID))";
+					+ " CONSTRAINT turma_professor FOREIGN KEY(FK_PROFESSOR) REFERENCES  USUARIO(ID),"
+					+ " CONSTRAINT turma_disciplina FOREIGN KEY(FK_DISCIPLINA) REFERENCES  DISCIPLINA(ID))";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			// connection.close();
@@ -105,8 +105,8 @@ public class SQLiteJDBC {
 
 			Statement stmt = connection.createStatement();
 			String sql = "CREATE TABLE DISCIPLINA "
-					+ "(ID 			INTEGER 	PRIMARY KEY    AUTOINCREMENT 	NOT NULL,"
-					+ " NOME           TEXT    	NOT NULL, " + " CODIGO    		CHAR(8)    	NOT NULL,"
+					+ "(IDDISCIPLINA 			INTEGER 	PRIMARY KEY    AUTOINCREMENT 	NOT NULL,"
+					+ " NOMEDISCIPLINA           TEXT    	NOT NULL, " + " CODIGO    		CHAR(8)    	NOT NULL,"
 					+ " CARGAHORARIA	INT			NOT NULL)";
 			stmt.executeUpdate(sql);
 			stmt.close();
@@ -126,9 +126,11 @@ public class SQLiteJDBC {
 		try {
 
 			Statement stmt = connection.createStatement();
-			String sql = "CREATE TABLE TURMA_ALUNO " + "(FK_TURMA	INTEGER		NOT NULL,"
-					+ " FK_ALUNO	INTEGER		NOT NULL," + " FOREIGN KEY (FK_TURMA) REFERENCES TURMA(ID),"
-					+ " FOREIGN KEY (FK_ALUNO) REFERENCES ALUNO(ID))";
+			String sql = "CREATE TABLE TURMA_ALUNO " + "("
+					+ "IDTALUNO			INTEGER 	PRIMARY KEY    AUTOINCREMENT 	NOT NULL,"
+					+ "FK_TURMA	INTEGER		NOT NULL,"
+					+ " FK_ALUNO	INTEGER		NOT NULL," + " CONSTRAINT tAluno_turma FOREIGN KEY (FK_TURMA) REFERENCES TURMA(ID),"
+					+ " CONSTRAINT tAluno_aluno FOREIGN KEY (FK_ALUNO) REFERENCES ALUNO(ID))";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			// connection.close();
@@ -138,7 +140,7 @@ public class SQLiteJDBC {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		System.out.println("Tabela TURMA criada com sucesso");
+		System.out.println("Tabela TURMA_ALUNO criada com sucesso");
 
 	}
 

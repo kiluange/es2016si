@@ -4,15 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class InsertUsuarioDB {
-
+public class InsertAlunoDB {
+	
 	public static void main(String[] args) {
-		new InsertUsuarioDB();
+		new InsertAlunoDB();
 	}
-
-	public InsertUsuarioDB() {
+	
+	public InsertAlunoDB() {
 		// TODO Auto-generated constructor stub
-
 		Connection c = null;
 		Statement stmt = null;
 		try {
@@ -22,7 +21,11 @@ public class InsertUsuarioDB {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO USUARIO (NOME,LOGIN,SENHA)" + "VALUES ('Daniel', '12345678900', '123456' );";
+			String sql = "INSERT INTO ALUNO (NOMEALUNO, MATRICULA)" + "VALUES ('maria da Neves','432156789')";
+			if (sql != null) {
+				String sql2 = "INSERT INTO TURMA_ALUNO (FK_TURMA, FK_ALUNO)" + "VALUES ('1','2')";
+				stmt.executeUpdate(sql2);				
+			}
 			stmt.executeUpdate(sql);
 
 			stmt.close();
@@ -33,7 +36,6 @@ public class InsertUsuarioDB {
 			System.exit(0);
 		}
 		System.out.println("Records created successfully");
-
 	}
 
 }

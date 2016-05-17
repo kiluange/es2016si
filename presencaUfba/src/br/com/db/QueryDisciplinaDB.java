@@ -35,11 +35,11 @@ public class QueryDisciplinaDB {
 			System.out.println("Opened database successfully");
 
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM DISCIPLINA WHERE CODIGO LIKE '%" + pesquisa + "%' OR NOME LIKE '%" + pesquisa + "%'");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM DISCIPLINA WHERE CODIGO LIKE '%" + pesquisa + "%' OR NOMEDISCIPLINA LIKE '%" + pesquisa + "%'");
 			while (rs.next()) {				
-				setId(rs.getInt("id"));
+				setId(rs.getInt("iddisciplina"));
 				setCod(rs.getString("codigo"));
-				setNome(rs.getString("nome"));
+				setNome(rs.getString("nomedisciplina"));
 				setCargaHoraria(rs.getInt("cargahoraria"));
 				//Adiciona resultado numa lista
 				Disciplina disciplina = new Disciplina(getId(), getCod(), getNome(), getCargaHoraria());

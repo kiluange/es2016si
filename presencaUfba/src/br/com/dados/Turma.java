@@ -1,6 +1,7 @@
 package br.com.dados;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Turma {
 	private int id;
@@ -9,9 +10,11 @@ public class Turma {
 	private String hora;
 	private String pavilhao;
 	private String sala;
+	private String nomeDisciplina;
+	private int cHoraria;
 	private LinkedList<Aluno> alunos;
 
-	public Turma(int id, int fkDisciplina, String codigo, String hora, String pavilhao ,String sala, LinkedList<Aluno> alunos) {
+	public Turma(int id, int fkDisciplina, String codigo, String hora, String pavilhao ,String sala, String nomeDisciplina, int cHoraria, List<Aluno> alunos) {
 		// TODO Auto-generated constructor stub
 		setId(id);
 		setFkDisciplina(fkDisciplina);
@@ -19,6 +22,8 @@ public class Turma {
 		setHora(hora);
 		setPavilhao(pavilhao);
 		setSala(sala);
+		setNomeDisciplina(nomeDisciplina);
+		setcHoraria(cHoraria);
 	}
 
 	public int getId() {
@@ -57,7 +62,7 @@ public class Turma {
 		return sala;
 	}
 
-	public void setSala(String sala) {
+	private void setSala(String sala) {
 		this.sala = sala;
 	}
 
@@ -65,7 +70,7 @@ public class Turma {
 		return pavilhao;
 	}
 
-	public void setPavilhao(String pavilhao) {
+	private void setPavilhao(String pavilhao) {
 		this.pavilhao = pavilhao;
 	}
 
@@ -75,6 +80,22 @@ public class Turma {
 
 	public void setAlunos(LinkedList<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+
+	public String getNomeDisciplina() {
+		return nomeDisciplina;
+	}
+
+	private void setNomeDisciplina(String nomeDisciplina) {
+		this.nomeDisciplina = nomeDisciplina;
+	}
+
+	public int getcHoraria() {
+		return cHoraria;
+	}
+
+	private void setcHoraria(int cHoraria) {
+		this.cHoraria = cHoraria;
 	}
 
 }

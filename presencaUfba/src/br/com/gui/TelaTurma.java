@@ -4,12 +4,16 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.LinkedList;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.dados.Aluno;
+
 import java.awt.Color;
 
 public class TelaTurma extends JDialog {
@@ -22,11 +26,12 @@ public class TelaTurma extends JDialog {
 
 	/**
 	 * Create the dialog.
-	 * @param choraria 
+	 * @param b 
 	 * @param codigo 
+	 * @param linkedList 
 	 * @param string 
 	 */
-	public TelaTurma(String disciplina, String codigo, String choraria) {
+	public TelaTurma(String disciplina, String codigo, int b, LinkedList<Aluno> linkedList) {
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1012, 568);
 		setModal(true);
@@ -46,7 +51,7 @@ public class TelaTurma extends JDialog {
 		getContentPane().add(panel, gbc_panel);
 		panel.setBorder(null);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 116, 129, 428, 63, 0};
+		gbl_panel.columnWidths = new int[]{48, 116, 129, 428, 63, 0};
 		gbl_panel.rowHeights = new int[]{25, 24, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
@@ -73,7 +78,7 @@ public class TelaTurma extends JDialog {
 			panel.add(label, gbc_label);
 		}
 		{
-			JLabel label = new JLabel("Carga Horaria: "+choraria);
+			JLabel label = new JLabel("Carga Horaria: "+b);
 			GridBagConstraints gbc_label = new GridBagConstraints();
 			gbc_label.anchor = GridBagConstraints.SOUTHWEST;
 			gbc_label.insets = new Insets(0, 0, 0, 5);
@@ -106,6 +111,10 @@ public class TelaTurma extends JDialog {
 						"Matr\u00EDcula", "Nome", "Aula 44"
 					}
 				) {
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = -7472866557859270248L;
 					Class[] columnTypes = new Class[] {
 						String.class, String.class, Boolean.class
 					};

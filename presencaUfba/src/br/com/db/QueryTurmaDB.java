@@ -11,26 +11,34 @@ import br.com.dados.Aluno;
 import br.com.dados.Turma;
 
 public class QueryTurmaDB {
-
+	// atributos da turma
 	private int id;
 	private int fkDisciplina;
 	private String codigo;
 	private String hora;
 	private String pavilhao;
 	private String sala;
-	
+	private String materia;
+	private int ch;
 	List<Turma> turmas;
-	
+
+	// atributos dos alunos
+	private int alunoId;
+	private String nomeAluno;
+	private String matricula;
+	List<Aluno> alunos;
+
 	public static void main(String[] args) {
 		new QueryTurmaDB(1);
 	}
-	
+
 	public QueryTurmaDB(int id) {
 		// TODO Auto-generated constructor stub
-		
+
 		Connection connection = null;
 		Statement stmt = null;
 		turmas = new LinkedList<Turma>();
+		alunos = new LinkedList<Aluno>();
 		try {
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:presenca.db");
@@ -38,16 +46,29 @@ public class QueryTurmaDB {
 			System.out.println("Opened database successfully");
 
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM TURMA WHERE FK_DISCIPLINA = " + id);
-			while (rs.next()) {				
-				setId(rs.getInt("id"));
+			ResultSet rs = stmt.executeQuery(
+					"SELECT TURMA.*, DISCIPLINA.*, ALUNO.* FROM TURMA INNER JOIN DISCIPLINA ON TURMA.FK_DISCIPLINA = DISCIPLINA.IDDISCIPLINA INNER JOIN ALUNO ON DISCIPLINA.IDDISCIPLINA = ALUNO.IDALUNO WHERE FK_DISCIPLINA = "
+							+ id);
+			while (rs.next()) {
+				// turma
+				setId(rs.getInt("idturma"));
 				setFkDisciplina(rs.getInt("FK_DISCIPLINA"));
 				setCodigo(rs.getString("codigo"));
 				setHora(rs.getString("hora"));
 				setPavilhao(rs.getString("pavilhao"));
 				setSala(rs.getString("sala"));
-				//Adiciona resultado numa lista
-				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala(), new LinkedList<Aluno>());
+				// disiciplina
+				setMateria(rs.getString("nomedisciplina"));
+				setCh(rs.getInt("cargahoraria"));
+				// aluno
+				setAlunoId(rs.getInt(9));
+				setNomeAluno(rs.getString("nomealuno"));
+				setMatricula(rs.getString("matricula"));
+				// Adiciona resultado numa lista
+				Aluno aluno = new Aluno(getAlunoId(), getMatricula(), getNomeAluno(), null);
+				alunos.add(aluno);
+				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala(),
+						getMateria(), getCh(), alunos);
 				turmas.add(turma);
 			}
 			rs.close();
@@ -58,11 +79,15 @@ public class QueryTurmaDB {
 			System.exit(0);
 		}
 		System.out.println("Operation done successfully");
-		
+
 	}
-	
+
 	public List<Turma> getAllTurmas() {
-		return turmas;		
+		return turmas;
+	}
+
+	public List<Aluno> getAllAlunos() {
+		return alunos;
 	}
 
 	public int getId() {
@@ -111,6 +136,46 @@ public class QueryTurmaDB {
 
 	public void setPavilhao(String pavilhao) {
 		this.pavilhao = pavilhao;
+	}
+
+	public String getMateria() {
+		return materia;
+	}
+
+	public void setMateria(String materia) {
+		this.materia = materia;
+	}
+
+	public int getCh() {
+		return ch;
+	}
+
+	public void setCh(int ch) {
+		this.ch = ch;
+	}
+
+	public String getNomeAluno() {
+		return nomeAluno;
+	}
+
+	public void setNomeAluno(String nomeAluno) {
+		this.nomeAluno = nomeAluno;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public int getAlunoId() {
+		return alunoId;
+	}
+
+	public void setAlunoId(int alunoId) {
+		this.alunoId = alunoId;
 	}
 
 }
