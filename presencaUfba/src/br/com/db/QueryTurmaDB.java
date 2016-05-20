@@ -51,14 +51,14 @@ public class QueryTurmaDB {
 							+ id);
 			while (rs.next()) {
 				// turma
-				setId(rs.getInt("idturma"));
+				setId(rs.getInt("IDTURMA"));
 				setFkDisciplina(rs.getInt("FK_DISCIPLINA"));
 				setCodigo(rs.getString("codigo"));
 				setHora(rs.getString("hora"));
 				setPavilhao(rs.getString("pavilhao"));
 				setSala(rs.getString("sala"));
 				// disiciplina
-				setMateria(rs.getString("nomedisciplina"));
+				setMateria(rs.getString("NOMEDISCIPLINA"));
 				setCh(rs.getInt("cargahoraria"));
 				// aluno
 				setAlunoId(rs.getInt(9));
