@@ -86,7 +86,7 @@ public class TelaLogin extends JPanel {
 				Fachada fachada = new Fachada();
 				fachada.login(textField.getText(), pwdPassword.getText());
 				System.out.println(textField.getText());
-				// verifica se o retorno e verdadeiro caso não seja ativa msg de
+				// verifica se o retorno e verdadeiro caso nï¿½o seja ativa msg de
 				// erro;
 				if (fachada.getLogado().isPass() == false) {
 					lblUsurioOuSenha.setVisible(true);
@@ -94,7 +94,7 @@ public class TelaLogin extends JPanel {
 					setEnabled(false);
 					setVisible(false);
 					MontaTela.menus(true);
-					MontaTela.setIdentificação(fachada.getLogado().getDb().getId());
+					MontaTela.setIdentificacao(fachada.getLogado().getDb().getId());
 					System.out.println(fachada.getLogado().getDb().getId());
 				}
 			}

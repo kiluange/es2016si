@@ -20,7 +20,7 @@ public class MontaTela extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 5554725647535056603L;
-	private static int identificação;
+	private static int identificacao;
 	protected static JMenu mnBuscar;
 	protected static JMenu mnRelatorio;
 	protected static JMenuItem mntmSair;
@@ -50,7 +50,7 @@ public class MontaTela extends JFrame {
 				try {
 					menus(false);
 					setContentPane(new TelaLogin());
-					identificação = 0;
+					identificacao = 0;
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -123,11 +123,11 @@ public class MontaTela extends JFrame {
 		
 	}
 
-	public static int getIdentificação() {
-		return identificação;
+	public static int getIdentificacao() {
+		return identificacao;
 	}
 
-	public static void setIdentificação(int identificação) {
-		MontaTela.identificação = identificação;
+	public static void setIdentificacao(int identificacao) {
+		MontaTela.identificacao = identificacao;
 	}
 }
