@@ -43,7 +43,7 @@ public class SQLiteJDBC {
 			Statement stmt = connection.createStatement();
 			String sql = "CREATE TABLE USUARIO "
 					+ "(IDUSUARIO 			INTEGER		PRIMARY KEY     AUTOINCREMENT	NOT NULL,"
-					+ " USERNOME           TEXT    	NOT NULL, " + " LOGIN          CHAR(30)    NOT NULL, "
+					+ " NOMEUSUARIO           TEXT    	NOT NULL, " + " LOGIN          CHAR(30)    NOT NULL, "
 					+ " SENHA        	CHAR(50) 	NOT NULL)";
 			stmt.executeUpdate(sql);
 			stmt.close();

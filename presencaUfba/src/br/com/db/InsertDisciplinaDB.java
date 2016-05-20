@@ -22,7 +22,7 @@ public class InsertDisciplinaDB {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO DISCIPLINA (CODIGO,NOME,CARGAHORARIA)" + "VALUES ('MATA64', 'Software avançado III', '62' );";
+			String sql = "INSERT INTO DISCIPLINA (CODIGO,NOMEDISCIPLINA,CARGAHORARIA)" + "VALUES ('MATA65', 'Software avançado II', '62' );";
 			stmt.executeUpdate(sql);
 
 			stmt.close();

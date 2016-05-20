@@ -22,7 +22,7 @@ public class InsertTurmaDb {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO TURMA (FK_DISCIPLINA,FK_PROFESSOR,CODIGO,HORA,PAVILHAO,SALA)" + "VALUES ('1','1','T0003','"+new Time(0)+"','PAF1','208')";
+			String sql = "INSERT INTO TURMA (FK_DISCIPLINA,FK_PROFESSOR,CODIGO,HORA,PAVILHAO,SALA)" + "VALUES ('2','1','T0002','"+new Time(0)+"','PAF1','208')";
 			stmt.executeUpdate(sql);
 
 			stmt.close();

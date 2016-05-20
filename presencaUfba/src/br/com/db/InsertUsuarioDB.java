@@ -22,7 +22,7 @@ public class InsertUsuarioDB {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO USUARIO (NOME,LOGIN,SENHA)" + "VALUES ('Daniel', '12345678900', '123456' );";
+			String sql = "INSERT INTO USUARIO (NOMEUSUARIO,LOGIN,SENHA)" + "VALUES ('Daniel', '12345678900', '123456' );";
 			stmt.executeUpdate(sql);
 
 			stmt.close();

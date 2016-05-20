@@ -31,8 +31,8 @@ public class QueryUsuarioDB{
 	      stmt = connection.createStatement();
 	      ResultSet rs = stmt.executeQuery( "SELECT * FROM USUARIO WHERE LOGIN = '"+ usuario +"'");
 	      while ( rs.next() ) {
-	         setId(rs.getInt("idusuario"));
-	         setName(rs.getString("usernome"));
+	         setId(rs.getInt("IDUSUARIO"));
+	         setName(rs.getString("NOMEUSUARIO"));
 	         setLogin(rs.getString("login"));
 	         setSenha(rs.getString("senha"));
 	         setProfessor(new Professor(getId(), getName(), getLogin(), getSenha()));
