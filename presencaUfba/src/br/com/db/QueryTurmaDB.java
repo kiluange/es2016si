@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.com.dados.Aluno;
 import br.com.dados.Turma;
 
 public class QueryTurmaDB {
@@ -22,11 +21,7 @@ public class QueryTurmaDB {
 	private int ch;
 	List<Turma> turmas;
 
-	// atributos dos alunos
-	private int alunoId;
-	private String nomeAluno;
-	private String matricula;
-	List<Aluno> alunos;
+	
 
 	public static void main(String[] args) {
 		new QueryTurmaDB(1);
@@ -38,7 +33,6 @@ public class QueryTurmaDB {
 		Connection connection = null;
 		Statement stmt = null;
 		turmas = new LinkedList<Turma>();
-		alunos = new LinkedList<Aluno>();
 		try {
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:presenca.db");
@@ -59,14 +53,9 @@ public class QueryTurmaDB {
 				setMateria(rs.getString("NOMEDISCIPLINA"));
 				setCh(rs.getInt("cargahoraria"));
 				// aluno
-				//setAlunoId(rs.getInt(9));
-				//setNomeAluno(rs.getString("nomealuno"));
-				//setMatricula(rs.getString("matricula"));
-				// Adiciona resultado numa lista
-				Aluno aluno = new Aluno(getAlunoId(), getMatricula(), getNomeAluno(), null);
-				alunos.add(aluno);
+				QueryAlunoDB alunoDB = new QueryAlunoDB(getId());
 				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala(),
-						getMateria(), getCh(), null);
+						getMateria(), getCh(), alunoDB.getAllAlunos());
 				turmas.add(turma);
 			}
 			rs.close();
@@ -82,11 +71,7 @@ public class QueryTurmaDB {
 
 	public List<Turma> getAllTurmas() {
 		return turmas;
-	}
-
-	public List<Aluno> getAllAlunos() {
-		return alunos;
-	}
+	}	
 
 	public int getId() {
 		return id;
@@ -151,29 +136,4 @@ public class QueryTurmaDB {
 	public void setCh(int ch) {
 		this.ch = ch;
 	}
-
-	public String getNomeAluno() {
-		return nomeAluno;
-	}
-
-	public void setNomeAluno(String nomeAluno) {
-		this.nomeAluno = nomeAluno;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
-
-	public int getAlunoId() {
-		return alunoId;
-	}
-
-	public void setAlunoId(int alunoId) {
-		this.alunoId = alunoId;
-	}
-
 }
