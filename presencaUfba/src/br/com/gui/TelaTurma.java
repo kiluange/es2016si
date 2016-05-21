@@ -13,8 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import org.apache.batik.css.engine.value.svg.TextRenderingManager;
-
 import br.com.dados.Aluno;
 import br.com.dados.Turma;
 import br.com.db.QueryAlunoDB;
