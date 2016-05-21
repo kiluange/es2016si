@@ -46,9 +46,7 @@ public class QueryTurmaDB {
 			System.out.println("Opened database successfully");
 
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(
-					"SELECT TURMA.*, DISCIPLINA.*, ALUNO.* FROM TURMA INNER JOIN DISCIPLINA ON TURMA.FK_DISCIPLINA = DISCIPLINA.IDDISCIPLINA INNER JOIN ALUNO ON DISCIPLINA.IDDISCIPLINA = ALUNO.IDALUNO WHERE FK_DISCIPLINA = "
-							+ id);
+			ResultSet rs = stmt.executeQuery("SELECT TURMA.*, DISCIPLINA.* FROM TURMA INNER JOIN DISCIPLINA ON TURMA.FK_DISCIPLINA = DISCIPLINA.IDDISCIPLINA WHERE FK_DISCIPLINA = "+ id);
 			while (rs.next()) {
 				// turma
 				setId(rs.getInt("IDTURMA"));
@@ -61,14 +59,14 @@ public class QueryTurmaDB {
 				setMateria(rs.getString("NOMEDISCIPLINA"));
 				setCh(rs.getInt("cargahoraria"));
 				// aluno
-				setAlunoId(rs.getInt(9));
-				setNomeAluno(rs.getString("nomealuno"));
-				setMatricula(rs.getString("matricula"));
+				//setAlunoId(rs.getInt(9));
+				//setNomeAluno(rs.getString("nomealuno"));
+				//setMatricula(rs.getString("matricula"));
 				// Adiciona resultado numa lista
 				Aluno aluno = new Aluno(getAlunoId(), getMatricula(), getNomeAluno(), null);
 				alunos.add(aluno);
 				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala(),
-						getMateria(), getCh(), alunos);
+						getMateria(), getCh(), null);
 				turmas.add(turma);
 			}
 			rs.close();
