@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
 import br.com.dados.Disciplina;
 import br.com.dados.Turma;
 import br.com.negocio.Fachada;
+import net.sf.jasperreports.engine.JRException;
 
 public class TelaPesquisaDisiciplina extends JDialog {
 
@@ -122,7 +124,12 @@ public class TelaPesquisaDisiciplina extends JDialog {
 						// get com -1 porque o campo list começa em 0 e a lista
 						// de turmas começa em 1
 						if (turma.getId() - 1 == list.getSelectedIndex()) {
-							new TelaTurma(turma).setVisible(true);
+							try {
+								new TelaTurma(turma).setVisible(true);
+							} catch (IOException | JRException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 						}
 					}
 				}

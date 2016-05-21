@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.IOException;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import br.com.dados.Aluno;
 import br.com.dados.Turma;
 import br.com.db.QueryAlunoDB;
+import net.sf.jasperreports.engine.JRException;
 
 public class TelaTurma extends JDialog {
 	/**
@@ -25,7 +27,7 @@ public class TelaTurma extends JDialog {
 	private final JPanel panel = new JPanel();
 	private JTable tabela;
 	
-	public TelaTurma(Turma turma) {
+	public TelaTurma(Turma turma) throws IOException, JRException {
 		setTitle("Turma "+ turma.getCodigo()+" "+ turma.getNomeDisciplina());
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1012, 568);
@@ -118,6 +120,8 @@ public class TelaTurma extends JDialog {
 				GridBagConstraints gbc_barraRolagem = new GridBagConstraints();
 				gbc_barraRolagem.fill = GridBagConstraints.HORIZONTAL;
 				panel_1.add(barraRolagem, gbc_barraRolagem);
+				
+				
 
 			}
 		}

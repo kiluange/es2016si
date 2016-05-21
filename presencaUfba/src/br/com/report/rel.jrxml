@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-05-21T11:07:19 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b170d84-6dd6-49fb-a400-c17d0ee58dd1">
 	<property name="ireport.zoom" value="1.6105100000000008"/>
 	<property name="ireport.x" value="485"/>
 	<property name="ireport.y" value="0"/>
-	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="Crosstab Data Text" hTextAlign="Center" hImageAlign="Center"/>
 	<parameter name="cabecalho" class="java.lang.Object"/>
 	<field name="matricula" class="java.lang.String"/>
 	<field name="nome" class="java.lang.String"/>
@@ -471,7 +473,7 @@
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[N° Aula]]></text>
+				<text><![CDATA[Nº Aula]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="143" y="18" width="17" height="14" uuid="fde16da7-3966-4220-bf79-8458364fd23a"/>
