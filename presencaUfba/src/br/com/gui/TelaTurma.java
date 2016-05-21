@@ -17,7 +17,11 @@ import javax.swing.table.DefaultTableModel;
 import br.com.dados.Aluno;
 import br.com.dados.Turma;
 import br.com.db.QueryAlunoDB;
+import br.com.report.ChamaRelatorio;
 import net.sf.jasperreports.engine.JRException;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaTurma extends JDialog {
 	/**
@@ -26,8 +30,9 @@ public class TelaTurma extends JDialog {
 	private static final long serialVersionUID = 7867583403619156890L;
 	private final JPanel panel = new JPanel();
 	private JTable tabela;
+	QueryAlunoDB alunoDB;
 	
-	public TelaTurma(Turma turma) throws IOException, JRException {
+	 public TelaTurma(final Turma turma) throws IOException, JRException {
 		setTitle("Turma "+ turma.getCodigo()+" "+ turma.getNomeDisciplina());
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1012, 568);
@@ -94,13 +99,13 @@ public class TelaTurma extends JDialog {
 			getContentPane().add(panel_1, gbc_panel_1);
 			GridBagLayout gbl_panel_1 = new GridBagLayout();
 			gbl_panel_1.columnWidths = new int[] { 976, 0 };
-			gbl_panel_1.rowHeights = new int[] { 429, 0 };
+			gbl_panel_1.rowHeights = new int[] { 429, 0, 0 };
 			gbl_panel_1.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-			gbl_panel_1.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+			gbl_panel_1.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 			panel_1.setLayout(gbl_panel_1);
 			{
 				// aluno
-				QueryAlunoDB alunoDB = new QueryAlunoDB(turma.getId());
+				 alunoDB = new QueryAlunoDB(turma.getId());
 
 				DefaultTableModel model = new DefaultTableModel();				
 				
@@ -118,13 +123,43 @@ public class TelaTurma extends JDialog {
 				JScrollPane barraRolagem = new JScrollPane(tabela);
 
 				GridBagConstraints gbc_barraRolagem = new GridBagConstraints();
+				gbc_barraRolagem.insets = new Insets(0, 0, 5, 0);
+				gbc_barraRolagem.gridx = 0;
+				gbc_barraRolagem.gridy = 0;
 				gbc_barraRolagem.fill = GridBagConstraints.HORIZONTAL;
 				panel_1.add(barraRolagem, gbc_barraRolagem);
 				
 				
 
 			}
+			{
+				JPanel panel_2 = new JPanel();
+				panel_2.setBackground(Color.WHITE);
+				panel_2.setLayout(null);
+				GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+				gbc_panel_2.fill = GridBagConstraints.BOTH;
+				gbc_panel_2.gridx = 0;
+				gbc_panel_2.gridy = 1;
+				panel_1.add(panel_2, gbc_panel_2);
+				
+				JButton newRel = new JButton("Exportar");
+				newRel.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						try {
+							new ChamaRelatorio(turma, alunoDB.getAllAlunos());
+						} catch (IOException | JRException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				});
+				newRel.setBounds(886, 0, 98, 26);
+				panel_2.add(newRel);
+				
+				JButton btnSalvar = new JButton("Salvar");
+				btnSalvar.setBounds(776, 0, 98, 26);
+				panel_2.add(btnSalvar);
+			}
 		}
 	}
-
 }
