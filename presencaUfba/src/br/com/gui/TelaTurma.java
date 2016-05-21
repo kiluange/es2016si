@@ -155,6 +155,7 @@ public class TelaTurma extends JDialog {
 						
 						if(res == JFileChooser.APPROVE_OPTION){
 						    java.io.File diretorio = fc.getSelectedFile();
+						    System.out.println(diretorio.getAbsolutePath());
 						    try {
 								new ChamaRelatorio(turma, alunoDB.getAllAlunos(), diretorio.getAbsolutePath());
 							} catch (IOException | JRException e) {

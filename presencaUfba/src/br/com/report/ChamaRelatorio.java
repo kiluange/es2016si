@@ -21,6 +21,7 @@ public class ChamaRelatorio {
 		//pega o caminho da pasta do projeto
 	  	String caminho = System.getProperty("user.dir");  
 	  	caminho.replace('\\', '/');
+	  	dir.replace('\\', '/');
 	  	
 	  	
 	  //Cria e abre o arquivo properties
@@ -40,6 +41,6 @@ public class ChamaRelatorio {
 	  //Chama o JasperReport
 	    JasperReport report = JasperCompileManager.compileReport(caminho + "/src/br/com/report/rel.jrxml");
 	    JasperPrint print = JasperFillManager.fillReport(report, mapa, new JRBeanCollectionDataSource(aluno));
-	    JasperExportManager.exportReportToPdfFile(print, "Lista de presença.pdf");
+	    JasperExportManager.exportReportToPdfFile(print, dir+"/Lista de presença.pdf");
 	}
 }
