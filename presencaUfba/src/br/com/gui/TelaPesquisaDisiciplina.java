@@ -122,7 +122,7 @@ public class TelaPesquisaDisiciplina extends JDialog {
 						// get com -1 porque o campo list começa em 0 e a lista
 						// de turmas começa em 1
 						if (turma.getId() - 1 == list.getSelectedIndex()) {
-							new TelaTurma(turma.getNomeDisciplina(), turma.getCodigo(), turma.getcHoraria(), turma.getAlunos()).setVisible(true);
+							new TelaTurma(turma).setVisible(true);
 						}
 					}
 				}

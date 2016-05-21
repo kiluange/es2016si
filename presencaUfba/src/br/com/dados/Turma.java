@@ -1,8 +1,5 @@
 package br.com.dados;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Turma {
 	private int id;
 	private int fkDisciplina;
@@ -12,9 +9,8 @@ public class Turma {
 	private String sala;
 	private String nomeDisciplina;
 	private int cHoraria;
-	private LinkedList<Aluno> alunos;
 
-	public Turma(int id, int fkDisciplina, String codigo, String hora, String pavilhao ,String sala, String nomeDisciplina, int cHoraria, List<Aluno> alunos) {
+	public Turma(int id, int fkDisciplina, String codigo, String hora, String pavilhao ,String sala, String nomeDisciplina, int cHoraria) {
 		// TODO Auto-generated constructor stub
 		setId(id);
 		setFkDisciplina(fkDisciplina);
@@ -72,14 +68,6 @@ public class Turma {
 
 	private void setPavilhao(String pavilhao) {
 		this.pavilhao = pavilhao;
-	}
-
-	public LinkedList<Aluno> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(LinkedList<Aluno> alunos) {
-		this.alunos = alunos;
 	}
 
 	public String getNomeDisciplina() {

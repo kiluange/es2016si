@@ -51,11 +51,9 @@ public class QueryTurmaDB {
 				setSala(rs.getString("sala"));
 				// disiciplina
 				setMateria(rs.getString("NOMEDISCIPLINA"));
-				setCh(rs.getInt("cargahoraria"));
-				// aluno
-				QueryAlunoDB alunoDB = new QueryAlunoDB(getId());
+				setCh(rs.getInt("cargahoraria"));				
 				Turma turma = new Turma(getId(), getFkDisciplina(), getCodigo(), getHora(), getPavilhao(), getSala(),
-						getMateria(), getCh(), alunoDB.getAllAlunos());
+						getMateria(), getCh());
 				turmas.add(turma);
 			}
 			rs.close();

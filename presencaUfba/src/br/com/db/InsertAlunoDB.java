@@ -21,7 +21,7 @@ public class InsertAlunoDB {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO ALUNO (NOMEALUNO, MATRICULA)" + "VALUES ('maria da Neves','432156789')";
+			String sql = "INSERT INTO ALUNO (NOMEALUNO, MATRICULA)" + "VALUES ('João das Neves','432156789')";
 			if (sql != null) {
 				String sql2 = "INSERT INTO TURMA_ALUNO (FK_TURMA, FK_ALUNO)" + "VALUES ('1','2')";
 				stmt.executeUpdate(sql2);				
