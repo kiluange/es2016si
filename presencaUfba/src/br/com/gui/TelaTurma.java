@@ -24,15 +24,7 @@ public class TelaTurma extends JDialog {
 	private static final long serialVersionUID = 7867583403619156890L;
 	private final JPanel panel = new JPanel();
 	private JTable tabela;
-
-	/**
-	 * Create the dialog.
-	 * 
-	 * @param b
-	 * @param codigo
-	 * @param linkedList
-	 * @param string
-	 */
+	
 	public TelaTurma(Turma turma) {
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1012, 568);
@@ -107,10 +99,13 @@ public class TelaTurma extends JDialog {
 				// aluno
 				QueryAlunoDB alunoDB = new QueryAlunoDB(turma.getId());
 
-				DefaultTableModel model = new DefaultTableModel();
+				DefaultTableModel model = new DefaultTableModel();				
 				
 				model.addColumn("Matrícula");
 				model.addColumn("Nome");
+				for (int i = 1; i < (turma.getcHoraria()/2)+1; i++) {
+					model.addColumn("Aula "+i);
+				}
 				for (Aluno aluno : alunoDB.getAllAlunos()) {
 					model.addRow(new Object[] { aluno.getMatricula(), aluno.getNome() });
 				}
@@ -119,7 +114,9 @@ public class TelaTurma extends JDialog {
 				tabela = new JTable(model);
 				JScrollPane barraRolagem = new JScrollPane(tabela);
 
-				panel_1.add(barraRolagem);
+				GridBagConstraints gbc_barraRolagem = new GridBagConstraints();
+				gbc_barraRolagem.fill = GridBagConstraints.HORIZONTAL;
+				panel_1.add(barraRolagem, gbc_barraRolagem);
 
 			}
 		}
