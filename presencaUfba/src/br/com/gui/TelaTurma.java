@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.batik.css.engine.value.svg.TextRenderingManager;
+
 import br.com.dados.Aluno;
 import br.com.dados.Turma;
 import br.com.db.QueryAlunoDB;
@@ -26,6 +28,7 @@ public class TelaTurma extends JDialog {
 	private JTable tabela;
 	
 	public TelaTurma(Turma turma) {
+		setTitle("Turma "+ turma.getCodigo()+" "+ turma.getNomeDisciplina());
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1012, 568);
 		setModal(true);
