@@ -17,10 +17,11 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 public class ChamaRelatorio {
 	
-	public ChamaRelatorio(Turma turma, List<Aluno> aluno) throws IOException, JRException {
+	public ChamaRelatorio(Turma turma, List<Aluno> aluno, String dir) throws IOException, JRException {
 		//pega o caminho da pasta do projeto
 	  	String caminho = System.getProperty("user.dir");  
 	  	caminho.replace('\\', '/');
+	  	
 	  	
 	  //Cria e abre o arquivo properties
 	    //Properties arq = new Properties();
@@ -39,6 +40,6 @@ public class ChamaRelatorio {
 	  //Chama o JasperReport
 	    JasperReport report = JasperCompileManager.compileReport(caminho + "/src/br/com/report/rel.jrxml");
 	    JasperPrint print = JasperFillManager.fillReport(report, mapa, new JRBeanCollectionDataSource(aluno));
-	    JasperExportManager.exportReportToPdfFile(print, "Lista de presença.pdf");	
+	    JasperExportManager.exportReportToPdfFile(print, "Lista de presença.pdf");
 	}
 }
